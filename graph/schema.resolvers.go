@@ -12,7 +12,17 @@ import (
 )
 
 func (r *mutationResolver) CreateLink(ctx context.Context, input model.NewLink) (*model.Link, error) {
-	panic(fmt.Errorf("not implemented"))
+	user := model.User{
+		Name: "test",
+	}
+
+	link := model.Link{
+		Title:   input.Title,
+		Address: input.Address,
+		User:    &user,
+	}
+
+	return &link, nil
 }
 
 func (r *mutationResolver) CreateUser(ctx context.Context, input model.NewUser) (string, error) {
